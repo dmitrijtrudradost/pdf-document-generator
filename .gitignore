@@ -27,3 +27,5 @@ output/*.html
 
 .env
 *.log
+
+release/
