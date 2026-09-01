@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <title>Счёт {{ invoice_id }}</title>
+  <style>
+    @font-face {
+      font-family: "DejaVu Sans";
+      src: url("../fonts/DejaVuSans.ttf");
+      font-weight: 400;
+    }
+    @font-face {
+      font-family: "DejaVu Sans";
+      src: url("../fonts/DejaVuSans-Bold.ttf");
+      font-weight: 700;
+    }
+    body {
+      font-family: "DejaVu Sans", sans-serif;
+      color: #111;
+      margin: 0;
+    }
+    h1 {
+      font-size: 18pt;
+      margin: 0 0 8px;
+    }
+    .meta {
+      margin-bottom: 16px;
+      line-height: 1.45;
+    }
+    .muted {
+      color: #555;
+      font-size: 9pt;
+    }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      max-width: 100%;
+      table-layout: fixed;
+      margin: 12px 0 16px;
+      box-sizing: border-box;
+    }
+    table, th, td {
+      border: 1px solid #333;
+    }
+    th, td {
+      box-sizing: border-box;
+      padding: 6px 8px;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+      word-break: break-word;
+      hyphens: auto;
+      max-width: 0;
+    }
+    th {
+      background: #e8e8e8;
+      font-weight: 700;
+      text-align: center;
+    }
+    td.num, th.num {
+      text-align: right;
+      max-width: none;
+      overflow-wrap: normal;
+      word-break: normal;
+    }
+    td.left, th.left {
+      text-align: left;
+    }
+    thead { display: table-header-group; }
+    tr { page-break-inside: avoid; }
+    .total {
+      text-align: right;
+      font-size: 13pt;
+      font-weight: 700;
+    }
+    .footer {
+      margin-top: 24px;
+      font-size: 9pt;
+      color: #444;
+    }
+  </style>
+</head>
+<body>
+  <h1>Счёт № {{ invoice_id }}</h1>
+  <div class="meta">
+    <div>Дата: {{ date|date }}</div>
+    <div>Контрагент: {{ customer.name }}{{ contragent }}</div>
+    <div>ИНН: {{ customer.inn }}</div>
+    <div>Адрес: {{ customer.address.city }} {{ customer.address.street }}{{ address }}</div>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 8%">№</th>
+        <th class="left" style="width: 42%">Наименование</th>
+        <th class="num" style="width: 12%">Кол-во</th>
+        <th class="num" style="width: 19%">Цена</th>
+        <th class="num" style="width: 19%">Сумма</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#items}}
+      <tr>
+        <td>{{ __index__ }}</td>
+        <td class="left">{{ name }}</td>
+        <td class="num">{{ qty }}</td>
+        <td class="num">{{ price|money }}</td>
+        <td class="num">{{ total|money }}</td>
+      </tr>
+      {{/items}}
+    </tbody>
+  </table>
+
+  <div class="total">Итого: {{ total|money }}{{ sum|money }}</div>
+  <div class="muted">Описание: {{ description }}</div>
+
+  <div class="footer">
+    Документ сформирован {{ __datetime__ }} из файла {{ __data_name__ }}
+    (строка {{ __row_num__ }}, id {{ __invoice_id__ }}).
+  </div>
+</body>
+</html>

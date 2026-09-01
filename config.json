@@ -1,0 +1,18 @@
+{
+  "template_dirs": ["./templates"],
+  "data_dirs": ["./data"],
+  "output_dir": "./output",
+  "font_dir": "./fonts",
+  "font_family": "DejaVu Sans",
+  "recursive": true,
+  "auto_open": true,
+  "auto_open_limit": 5,
+  "csv_engine": "auto",
+  "csv_delimiter": "auto",
+  "csv_encoding": "auto",
+  "json_root": "auto",
+  "id_field": "auto",
+  "id_field_candidates": ["invoice_id", "invoice", "id", "number", "номер", "№"],
+  "display_fields": ["date", "contragent", "customer", "sum", "total", "amount"],
+  "filename_pattern": "{data_name}_{invoice_id}"
+}

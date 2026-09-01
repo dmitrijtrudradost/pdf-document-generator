@@ -1,0 +1,18 @@
+{
+  "invoices": [
+    {
+      "invoice_id": "INV-3001",
+      "date": "2026-08-10",
+      "total": 15000,
+      "customer": {"name": "ООО «Север»", "inn": "7700000001", "address": {"city": "Мурманск", "street": "пр. Ленина, 1"}},
+      "items": [{"name": "Доставка", "qty": 1, "price": 15000, "total": 15000}]
+    },
+    {
+      "invoice_id": "INV-3002",
+      "date": "2026-08-11",
+      "total": 22000,
+      "customer": {"name": "ИП Сидоров", "inn": "7800000002", "address": {"city": "Казань", "street": "ул. Баумана, 5"}},
+      "items": [{"name": "Упаковка", "qty": 2, "price": 11000, "total": 22000}]
+    }
+  ]
+}
