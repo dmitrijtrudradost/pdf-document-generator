@@ -19,10 +19,14 @@ Thumbs.db
 
 tz/
 data/*
-!data/example*
+!data/example.csv
+!data/example.json
+!data/example_wrapped.json
+!data/example_idmap.json
+!data/example_single.json
 
-output/*.pdf
-output/*.html
+output/**/*.pdf
+output/**/*.html
 !output/.gitkeep
 
 .env
